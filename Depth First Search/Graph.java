@@ -8,8 +8,8 @@ public class Graph {
     ArrayList<Node> nodes;
     int[][] matrix;
 
-    public Graph(int size){
-        nodes =  new ArrayList<>();
+    public Graph(int size) {
+        nodes = new ArrayList<>();
         matrix = new int[size][size];
     }
 
@@ -17,52 +17,50 @@ public class Graph {
         nodes.add(node);
     }
 
-    public void addEdge(int src, int dst){
+    public void addEdge(int src, int dst) {
         matrix[src][dst] = 1;
     }
 
-    public boolean checkEdge(int src, int dst){
-        if(matrix[src][dst] == 1){
+    public boolean checkEdge(int src, int dst) {
+        if (matrix[src][dst] == 1) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
-    public void print(){
+    public void print() {
         System.out.print("  ");
 
-        for(Node node : nodes){
+        for (Node node : nodes) {
             System.out.print(node.data + " ");
         }
         System.out.println();
 
-        for(int i=0; i<matrix.length; i++){
+        for (int i = 0; i < matrix.length; i++) {
             System.out.print(nodes.get(i).data + " ");
-            for(int j=0; j<matrix.length; j++){
+            for (int j = 0; j < matrix.length; j++) {
                 System.out.print(matrix[i][j] + " ");
             }
             System.out.println();
         }
     }
 
-    public void depthFirstSearch(int src){
+    public void depthFirstSearch(int src) {
         boolean[] visited = new boolean[matrix.length];
         dFSHelper(src, visited);
     }
 
-    private void dFSHelper(int src, boolean[] visited){
-        if(visited[src]){
+    private void dFSHelper(int src, boolean[] visited) {
+        if (visited[src]) {
             return;
-        }
-        else {
+        } else {
             visited[src] = true;
             System.out.println(nodes.get(src).data + " = visited"); // output for the path
         }
 
-        for(int i=0; i<matrix[src].length; i++){
-            if(matrix[src][i] == 1) {
+        for (int i = 0; i < matrix[src].length; i++) {
+            if (matrix[src][i] == 1) {
                 dFSHelper(i, visited);
             }
         }
