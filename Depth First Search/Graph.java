@@ -8,7 +8,7 @@ public class Graph {
     ArrayList<Node> nodes;
     int[][] matrix;
 
-    Graph(int size){
+    public Graph(int size){
         nodes =  new ArrayList<>();
         matrix = new int[size][size];
     }
